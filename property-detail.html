@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Details - MyRealEstate</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MyRealEstate</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="buy.html" class="dropdown-toggle">Buy ▼</a>
+        <ul class="dropdown-menu">
+          <li><a href="buy.html">All Properties</a></li>
+          <li><a href="buy.html?type=apartment">Flats</a></li>
+          <li><a href="buy.html?type=house">Houses</a></li>
+          <li><a href="buy.html?type=villa">Villas</a></li>
+          <li><a href="buy.html?type=plot">Land</a></li>
+          <li><a href="buy.html?type=commercial">Commercial</a></li>
+        </ul>
+      </li>
+      <li><a href="rent.html">Rent</a></li>
+      <li><a href="sell.html">Sell</a></li>
+      <li><a href="#">Commercial</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Property Detail Section -->
+  <section class="property-detail">
+    <div class="detail-container">
+      
+      <!-- Property Gallery -->
+      <div class="property-gallery">
+        <div class="main-image">
+          <img id="mainImage" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=500&fit=crop" alt="Property Main Image">
+        </div>
+        <div class="thumbnail-gallery">
+          <img class="thumbnail active" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=150&h=100&fit=crop" alt="Image 1">
+          <img class="thumbnail" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=150&h=100&fit=crop" alt="Image 2">
+          <img class="thumbnail" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=150&h=100&fit=crop" alt="Image 3">
+          <img class="thumbnail" src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=150&h=100&fit=crop" alt="Image 4">
+        </div>
+      </div>
+
+      <!-- Property Information -->
+      <div class="property-info">
+        <div class="property-header">
+          <h1>Luxury 3 BHK Apartment in Bandra West</h1>
+          <div class="property-price">₹1.5 Crore</div>
+          <div class="property-location">📍 Bandra West, Mumbai, Maharashtra</div>
+        </div>
+
+        <div class="property-highlights">
+          <div class="highlight-item">
+            <span class="highlight-label">Area</span>
+            <span class="highlight-value">1,250 sq.ft</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-label">Bedrooms</span>
+            <span class="highlight-value">3 BHK</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-label">Bathrooms</span>
+            <span class="highlight-value">3</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-label">Furnishing</span>
+            <span class="highlight-value">Semi-Furnished</span>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-section">
+          <h3>Interested in this property?</h3>
+          <form class="quick-contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" required>
+              <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-row">
+              <input type="tel" placeholder="Phone Number" required>
+              <select required>
+                <option value="">I'm interested in</option>
+                <option value="buying">Buying</option>
+                <option value="site_visit">Site Visit</option>
+                <option value="more_info">More Information</option>
+              </select>
+            </div>
+            <textarea placeholder="Your message (optional)" rows="3"></textarea>
+            <button type="submit" class="contact-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Property Details -->
+    <div class="detail-sections">
+      
+      <!-- Description -->
+      <div class="detail-section">
+        <h2>Property Description</h2>
+        <p>This stunning 3 BHK apartment in the heart of Bandra West offers luxury living with modern amenities. The property features spacious rooms, premium fittings, and breathtaking views of the city skyline.</p>
+        <p>Located in one of Mumbai's most sought-after neighborhoods, this property provides easy access to shopping centers, restaurants, schools, and transportation hubs.</p>
+      </div>
+
+      <!-- Amenities -->
+      <div class="detail-section">
+        <h2>Amenities & Features</h2>
+        <div class="amenities-grid">
+          <div class="amenity-item">🏊‍♂️ Swimming Pool</div>
+          <div class="amenity-item">🏋️‍♂️ Gymnasium</div>
+          <div class="amenity-item">🚗 Covered Parking</div>
+          <div class="amenity-item">🔒 24/7 Security</div>
+          <div class="amenity-item">🌳 Garden Area</div>
+          <div class="amenity-item">👶 Children's Play Area</div>
+          <div class="amenity-item">💡 Power Backup</div>
+          <div class="amenity-item">🚰 Water Supply</div>
+        </div>
+      </div>
+
+      <!-- Location Map -->
+      <div class="detail-section">
+        <h2>Location & Nearby</h2>
+        <div class="property-map">
+          <div id="propertyMap"></div>
+        </div>
+        <div class="nearby-places">
+          <div class="nearby-category">
+            <h4>🏥 Healthcare</h4>
+            <ul>
+              <li>Lilavati Hospital - 2.5 km</li>
+              <li>Holy Spirit Hospital - 1.8 km</li>
+            </ul>
+          </div>
+          <div class="nearby-category">
+            <h4>🎓 Education</h4>
+            <ul>
+              <li>St. Andrews High School - 1.2 km</li>
+              <li>Mithibai College - 3.1 km</li>
+            </ul>
+          </div>
+          <div class="nearby-category">
+            <h4>🛒 Shopping</h4>
+            <ul>
+              <li>Linking Road - 1.5 km</li>
+              <li>Palladium Mall - 2.8 km</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Similar Properties -->
+  <section class="similar-properties">
+    <div class="container">
+      <h2>Similar Properties</h2>
+      <div class="property-list">
+        <div class="property-card">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=250&fit=crop" alt="Similar Property 1">
+          <h3>2 BHK Apartment in Bandra</h3>
+          <p class="price">₹1.2 Cr</p>
+          <p>900 sq.ft · 2 BHK · 2 Bath</p>
+          <p>Bandra East, Mumbai</p>
+        </div>
+        <div class="property-card">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=250&fit=crop" alt="Similar Property 2">
+          <h3>3 BHK Apartment in Khar</h3>
+          <p class="price">₹1.8 Cr</p>
+          <p>1,400 sq.ft · 3 BHK · 3 Bath</p>
+          <p>Khar West, Mumbai</p>
+        </div>
+        <div class="property-card">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop" alt="Similar Property 3">
+          <h3>3 BHK Apartment in Santacruz</h3>
+          <p class="price">₹1.3 Cr</p>
+          <p>1,100 sq.ft · 3 BHK · 2 Bath</p>
+          <p>Santacruz West, Mumbai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MyRealEstate. All rights reserved.</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize property detail map
+    var propertyMap = L.map('propertyMap').setView([19.0596, 72.8295], 15);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(propertyMap);
+
+    // Property marker
+    var propertyIcon = L.divIcon({
+      className: 'property-marker',
+      html: '<div class="property-pin"><span>🏠</span></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 30]
+    });
+
+    L.marker([19.0596, 72.8295], {icon: propertyIcon})
+      .addTo(propertyMap)
+      .bindPopup('This Property Location');
+
+    // Gallery functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      const mainImage = document.getElementById('mainImage');
+      
+      thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+          // Remove active class from all thumbnails
+          thumbnails.forEach(t => t.classList.remove('active'));
+          // Add active class to clicked thumbnail
+          this.classList.add('active');
+          // Update main image
+          mainImage.src = this.src.replace('w=150&h=100', 'w=800&h=500');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

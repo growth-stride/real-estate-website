@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Property - MyRealEstate</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MyRealEstate</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="buy.html" class="dropdown-toggle">Buy ▼</a>
+        <ul class="dropdown-menu">
+          <li><a href="buy.html">All Properties</a></li>
+          <li><a href="buy.html?type=apartment">Flats</a></li>
+          <li><a href="buy.html?type=house">Houses</a></li>
+          <li><a href="buy.html?type=villa">Villas</a></li>
+          <li><a href="buy.html?type=plot">Land</a></li>
+          <li><a href="buy.html?type=commercial">Commercial</a></li>
+        </ul>
+      </li>
+      <li><a href="rent.html">Rent</a></li>
+      <li><a href="sell.html" class="active">Sell</a></li>
+      <li><a href="#">Commercial</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Professional Multi-Step Sell Form -->
+  <section class="sell-section">
+    <div class="form-container">
+      <div class="form-header">
+        <h1>List Your Property</h1>
+        <p>Join thousands of satisfied property owners who trust us</p>
+        
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+          <div class="step active" data-step="1">
+            <div class="step-number">1</div>
+            <span>Basic Info</span>
+          </div>
+          <div class="step" data-step="2">
+            <div class="step-number">2</div>
+            <span>Property Details</span>
+          </div>
+          <div class="step" data-step="3">
+            <div class="step-number">3</div>
+            <span>Images & Contact</span>
+          </div>
+          <div class="step" data-step="4">
+            <div class="step-number">4</div>
+            <span>Review & Submit</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="multiStepForm" class="multi-step-form">
+        
+        <!-- Step 1: Basic Information -->
+        <div class="form-step active" data-step="1">
+          <h2>Basic Information</h2>
+          
+          <div class="form-group">
+            <label for="propertyTitle">Property Title *</label>
+            <input type="text" id="propertyTitle" name="title" required placeholder="e.g., Spacious 3 BHK Apartment in Bandra">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="propertyType">Property Type *</label>
+              <select id="propertyType" name="type" required>
+                <option value="">Select Type</option>
+                <option value="apartment">Apartment/Flat</option>
+                <option value="house">Independent House</option>
+                <option value="villa">Villa</option>
+                <option value="plot">Plot/Land</option>
+                <option value="commercial">Commercial Space</option>
+                <option value="office">Office</option>
+                <option value="warehouse">Warehouse/Godown</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="listingType">Listing For *</label>
+              <select id="listingType" name="listing_type" required>
+                <option value="">Select Option</option>
+                <option value="sell">Sale</option>
+                <option value="rent">Rent</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="propertyLocation">Location *</label>
+            <input type="text" id="propertyLocation" name="location" required placeholder="Area, City, State">
+          </div>
+        </div>
+
+        <!-- Step 2: Property Details -->
+        <div class="form-step" data-step="2">
+          <h2>Property Details</h2>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bedrooms">Bedrooms</label>
+              <select id="bedrooms" name="bedrooms">
+                <option value="">Select</option>
+                <option value="1">1 BHK</option>
+                <option value="2">2 BHK</option>
+                <option value="3">3 BHK</option>
+                <option value="4">4 BHK</option>
+                <option value="5">5+ BHK</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="bathrooms">Bathrooms</label>
+              <select id="bathrooms" name="bathrooms">
+                <option value="">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="area">Built-up Area (sq.ft) *</label>
+              <input type="number" id="area" name="area" required placeholder="e.g., 1200">
+            </div>
+            
+            <div class="form-group">
+              <label for="price">Price (₹) *</label>
+              <input type="number" id="price" name="price" required placeholder="e.g., 5000000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="furnishing">Furnishing Status</label>
+            <select id="furnishing" name="furnishing">
+              <option value="">Select Status</option>
+              <option value="unfurnished">Unfurnished</option>
+              <option value="semi-furnished">Semi-Furnished</option>
+              <option value="fully-furnished">Fully Furnished</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 3: Images & Contact -->
+        <div class="form-step" data-step="3">
+          <h2>Images & Contact Details</h2>
+          
+          <div class="form-group">
+            <label for="propertyImages">Property Images *</label>
+            <div class="image-upload-area">
+              <input type="file" id="propertyImages" name="images" accept="image/*" multiple required>
+              <div class="upload-placeholder">
+                <i class="upload-icon">📷</i>
+                <p>Click to upload images or drag and drop</p>
+                <span>Maximum 10 images, 5MB each</span>
+              </div>
+            </div>
+            <div class="image-preview" id="imagePreview"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ownerName">Owner Name *</label>
+              <input type="text" id="ownerName" name="owner_name" required placeholder="Your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="contact">Contact Number *</label>
+              <input type="tel" id="contact" name="contact" required placeholder="+91 9876543210">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Property Description</label>
+            <textarea id="description" name="description" rows="4" placeholder="Describe your property, nearby amenities, unique features..."></textarea>
+          </div>
+        </div>
+
+        <!-- Step 4: Review & Submit -->
+        <div class="form-step" data-step="4">
+          <h2>Review Your Listing</h2>
+          <div class="review-container" id="reviewContainer">
+            <!-- Review content will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="form-navigation">
+          <button type="button" class="btn-prev" id="prevBtn" style="display: none;">Previous</button>
+          <button type="button" class="btn-next" id="nextBtn">Next</button>
+          <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">Submit Listing</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

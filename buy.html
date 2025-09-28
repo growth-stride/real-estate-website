@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Properties</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <!-- Navbar -->
+      <nav class="navbar">
+        <div class="logo">MyRealEstate</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="buy.html" class="dropdown-toggle active">Buy ▼</a>
+            <ul class="dropdown-menu">
+              <li><a href="buy.html">All Properties</a></li>
+              <li><a href="buy.html?type=apartment">Flats</a></li>
+              <li><a href="buy.html?type=house">Houses</a></li>
+              <li><a href="buy.html?type=villa">Villas</a></li>
+              <li><a href="buy.html?type=plot">Land</a></li>
+              <li><a href="buy.html?type=commercial">Commercial</a></li>
+            </ul>
+          </li>
+          <li><a href="rent.html">Rent</a></li> <!-- ✅ Rent page added -->
+          <li><a href="sell.html">Sell</a></li>
+          <li><a href="#">Commercial</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+  </header>
+
+  <!-- Buy Page Content -->
+  <section class="buy-page">
+    <h1>Search Properties for Sale</h1>
+    <p>Find Apartments, Villas, Plots, Godowns and Land.</p>
+
+    <!-- Advanced Search Bar -->
+    <div class="advanced-search">
+      <div class="search-bar">
+        <input type="text" id="searchLocation" placeholder="Enter city, locality or project name...">
+        <button id="searchBtn">Search</button>
+      </div>
+      
+      <div class="search-filters">
+        <div class="filter-group">
+          <select id="propertyTypeFilter">
+            <option value="">All Property Types</option>
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="villa">Villa</option>
+            <option value="commercial">Commercial</option>
+            <option value="plot">Plot/Land</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <select id="budgetFilter">
+            <option value="">Budget</option>
+            <option value="0-50">Below ₹50 Lakh</option>
+            <option value="50-100">₹50L - ₹1 Cr</option>
+            <option value="100-200">₹1 - ₹2 Cr</option>
+            <option value="200-500">₹2 - ₹5 Cr</option>
+            <option value="500+">Above ₹5 Cr</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <select id="bhkFilter">
+            <option value="">BHK</option>
+            <option value="1">1 BHK</option>
+            <option value="2">2 BHK</option>
+            <option value="3">3 BHK</option>
+            <option value="4">4+ BHK</option>
+          </select>
+        </div>
+        
+        <button id="clearFilters" class="clear-btn">Clear Filters</button>
+      </div>
+    </div>
+
+    <!-- Property Cards -->
+    <div class="property-list">
+      <div class="property-card">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=250&fit=crop" alt="Property 1">
+        <h3>2 BHK Apartment in Mumbai</h3>
+        <p class="price">₹ 85 Lakh</p>
+        <p>950 sq.ft · 2 BHK · 2 Bath</p>
+        <p>Bandra West, Mumbai</p>
+        <p><strong>Contact:</strong> +91 98765 43210</p>
+      </div>
+      <div class="property-card">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=250&fit=crop" alt="Property 2">
+        <h3>Luxury Villa in Delhi</h3>
+        <p class="price">₹ 2.5 Cr</p>
+        <p>2500 sq.ft · 4 BHK · 4 Bath</p>
+        <p>Gurgaon, Delhi NCR</p>
+        <p><strong>Contact:</strong> +91 98765 12345</p>
+      </div>
+      <div class="property-card">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop" alt="Property 3">
+        <h3>Commercial Office Space</h3>
+        <p class="price">₹ 1.2 Cr</p>
+        <p>1800 sq.ft · Furnished · Parking</p>
+        <p>Whitefield, Bangalore</p>
+        <p><strong>Contact:</strong> +91 99887 66554</p>
+      </div>
+    </div>
+
+    <!-- Map Container -->
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize map
+    var map = L.map('map').setView([20.5937, 78.9629], 5);
+
+    // OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example property data
+    var properties = [
+      {
+        name: "2 BHK Apartment in Mumbai",
+        coords: [19.0760, 72.8777],
+        price: "₹ 85 Lakh",
+        size: "950 sq.ft",
+        contact: "+91 98765 43210",
+        image: "https://via.placeholder.com/300x200"
+      },
+      {
+        name: "Luxury Villa in Delhi",
+        coords: [28.6139, 77.2090],
+        price: "₹ 2.5 Cr",
+        size: "2500 sq.ft",
+        contact: "+91 98765 12345",
+        image: "https://via.placeholder.com/300x200"
+      },
+      {
+        name: "Residential Plot in Bangalore",
+        coords: [12.9716, 77.5946],
+        price: "₹ 60 Lakh",
+        size: "1200 sq.ft",
+        contact: "+91 99887 66554",
+        image: "https://via.placeholder.com/300x200"
+      }
+    ];
+
+    // Custom marker icon
+    var customIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div class="marker-pin"><span>₹</span></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 30]
+    });
+
+    // Add markers with enhanced popup
+    properties.forEach(function(prop) {
+      var popupContent = `
+        <div class="popup-card">
+          <img src="${prop.image}" alt="${prop.name}">
+          <div class="popup-content">
+            <h3>${prop.name}</h3>
+            <div class="popup-price">${prop.price}</div>
+            <p><i class="icon-size">🏠</i> ${prop.size}</p>
+            <p><i class="icon-phone">📞</i> ${prop.contact}</p>
+            <button class="popup-btn" onclick="alert('Contact: ${prop.contact}')">Contact Owner</button>
+            <button class="popup-btn secondary" onclick="alert('Property details for ${prop.name}')">View Details</button>
+          </div>
+        </div>
+      `;
+      
+      var marker = L.marker(prop.coords, {icon: customIcon})
+        .addTo(map)
+        .bindPopup(popupContent, {
+          maxWidth: 300,
+          className: 'custom-popup'
+        });
+        
+      // Add hover effects
+      marker.on('mouseover', function() {
+        this.openPopup();
+      });
+    });
+  </script>
+</body>
+</html>
