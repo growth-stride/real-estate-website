@@ -1,0 +1,281 @@
+/* User Authentication Styles */
+
+/* Login Button (when not logged in) */
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: rgba(247, 155, 114, 0.15);
+    color: #F79B72;
+    border: 1.5px solid rgba(247, 155, 114, 0.4);
+    border-radius: 50%;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.login-btn:hover {
+    background: rgba(247, 155, 114, 0.25);
+    border-color: #F79B72;
+    transform: scale(1.05);
+}
+
+.login-icon {
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* User Profile Button (when logged in) */
+.user-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: rgba(247, 155, 114, 0.15);
+    border: 1.5px solid rgba(247, 155, 114, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.user-profile-btn:hover {
+    background: rgba(247, 155, 114, 0.25);
+    border-color: #F79B72;
+    transform: scale(1.05);
+}
+
+.user-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: none;
+    display: block;
+}
+
+.user-name-nav {
+    display: none;
+}
+
+/* User Sidebar */
+.user-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.user-sidebar.active {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.user-sidebar.active .sidebar-overlay {
+    opacity: 1;
+}
+
+/* Sidebar Content */
+.sidebar-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    max-width: 90vw;
+    height: 100%;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.user-sidebar.active .sidebar-content {
+    transform: translateX(0);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar-close:hover {
+    background: #2A4759;
+    color: white;
+}
+
+/* Sidebar User Info */
+.sidebar-user-info {
+    padding: 24px 30px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.sidebar-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F79B72;
+    margin-bottom: 12px;
+}
+
+.sidebar-user-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2A4759;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+.sidebar-user-email {
+    font-size: 13px;
+    color: #666666;
+    font-weight: 400;
+}
+
+/* Sidebar Navigation */
+/* Sidebar Navigation */
+.sidebar-nav {
+    padding: 20px 0;
+    flex: 1;
+}
+
+.sidebar-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 30px;
+    color: #2D2D2D;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.sidebar-nav-item:hover {
+    background: #F5F5F5;
+    border-left-color: #F79B72;
+    color: #2A4759;
+}
+
+.nav-icon {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: transparent;
+    color: #EF4444;
+    border: 1.5px solid #EF4444;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #EF4444;
+    color: white;
+}
+
+.logout-icon {
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar-content {
+        width: 300px;
+    }
+    
+    .user-name-nav {
+        display: none;
+    }
+    
+    .user-profile-btn {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-content {
+        width: 85vw;
+    }
+}
+
+/* Navbar adjustment for user button */
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#user-button-container {
+    list-style: none;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
